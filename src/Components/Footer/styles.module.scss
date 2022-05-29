@@ -1,0 +1,9 @@
+@import '../../Constants/constants.scss ';
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  background: $PRIMARY_COLOR;
+  padding: 16px 30px 17px;
+}
