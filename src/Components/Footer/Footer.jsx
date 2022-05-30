@@ -5,7 +5,7 @@ import styles from './styles.module.scss';
 const Footer = () => {
   return (
     <div className={styles.footer}>
-      <Icon iconName='footer' />
+      <Icon iconName='white-brand' />
     </div>
   );
 };
