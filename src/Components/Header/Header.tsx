@@ -1,42 +1,31 @@
 import React from 'react';
+import { Input } from '../../UI/Input/Input';
+import { Icon } from '../SvgIcons/Icons';
 import styles from './styles.module.scss';
+import avatar from '../../assets/images/avatar.png';
 
 const Header: React.FC = () => {
-  return <div className={styles.container}>Header component</div>;
+  return (
+    <div className={styles.headerContainer}>
+      <Input placeholder='Search' icon='icon-search' />
+      <div className={styles.infoPannel}>
+        <div className={styles.infoPannel__item}>
+          <Icon iconName='icon-bell' />
+        </div>
+        <div className={styles.infoPannel__item}>
+          <img
+            className={styles.infoPannel__item_elips}
+            src={avatar}
+            alt='avatar'
+          />
+        </div>
+        <div className={styles.infoPannel__item}>Ivan</div>
+        <div className={styles.infoPannel__item}>
+          <Icon iconName='icon-log-out' />
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Header;
-// import React from 'react';
-// import styles from './styles.module.scss';
-// import heart from '../../assets/icon/heart.svg';
-// import basket from '../../assets/icon/basket.svg';
-// import lable from '../../assets/images/QPICK.png';
-// import { Link } from 'react-router-dom';
-
-// const Header = (props) => {
-
-//   return (
-//     <div className={styles.header}>
-//       <div>
-//         <img src={lable} alt='lable' />
-//       </div>
-//       <div className={styles.buttonMenu}>
-//         <div className={styles.heart}>
-//           <button className={styles.btn}>
-//             <img src={heart} alt='heart' />
-//           </button>
-//         </div>
-//         <div className={styles.basket}>
-//           <Link to={'/basket'}>
-//             <button className={styles.btn}>
-//               <img src={basket} alt='basket' />
-//             </button>
-//           </Link>
-//           <div className={styles.notification}>1</div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Header;
