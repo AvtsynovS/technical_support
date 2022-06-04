@@ -4,18 +4,17 @@
   flex: 1 1 auto;
   align-items: center;
   background: linear-gradient(180deg, #d5eee2 0%, #7db59a 43.23%);
-  padding-top: 30px;
-  padding: 30px 28px 0;
+  padding: 32px 12px;
+  // padding-top: 32px 28px 0;
   max-width: 96px;
   min-height: 100vh;
-  & li {
-    margin-bottom: 24px;
-  }
 }
 
-.navbarList {
+.navbar__list {
   display: flex;
   flex-direction: column;
-  row-gap: 1rem;
-  margin-top: 50px;
+  margin-top: 48px;
+  & li {
+    margin-bottom: 23px;
+  }
 }
