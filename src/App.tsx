@@ -17,11 +17,12 @@ const App: React.FC = () => {
       <div className={styles.wrapper}>
         <Header />
         <Routes>
-          <Route path='/' element={<AuthorizationPage />} />
+          {/* <Route path='/' element={<AuthorizationPage />} /> */}
           <Route path='/registration' element={<RegistrationPage />} />
           <Route path='/createclaim' element={<CreateClaimPage />} />
           <Route path='/editclaim' element={<EditClaimPage />} />
-          <Route path='/main' element={<MainPage />} />
+          {/* <Route path='/main' element={<MainPage />} /> */}
+          <Route path='/' element={<MainPage />} />
           <Route path='*' element={<NotFoundPage />} />
         </Routes>
       </div>

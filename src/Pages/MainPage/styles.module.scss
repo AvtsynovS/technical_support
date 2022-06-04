@@ -1,0 +1,30 @@
+@import '../../Constants//constants.scss';
+
+.container {
+  margin: 56px;
+}
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  & h1 {
+    font: $FONT_TITLE;
+  }
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.table__header {
+  background: #f1f1f1;
+  border-radius: 0px;
+  font: 500 18px/22px sans-serif;
+  & tr {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 24px;
+    margin-right: 279px;
+  }
+}
