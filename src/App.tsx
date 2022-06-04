@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 // import styles from './styles.module.scss';
 import AuthorizationPage from './Pages/AuthorizationPage/AuthorizationPage';
 import NotFoundPage from './Pages/NotFoundPage/NotFoundPage';
