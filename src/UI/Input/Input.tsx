@@ -25,7 +25,7 @@ const StyleInput = styled.input<Props>`
   font: 400 18px/32px sans-serif;
   background: #f0f0f0;
   border-radius: 16px;
-  padding: 8px 16px;
+  padding: 8px 26px;
   &::-webkit-input-placeholder {
     color: #adadad;
   }

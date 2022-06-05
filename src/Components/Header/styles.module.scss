@@ -7,7 +7,7 @@
   border-bottom: 1px solid #c2c2c2;
   & .headerContainer__search {
     flex: 1 1 auto;
-    margin-right: 64px;
+    margin-right: 65px;
     max-width: 585px;
   }
   & .infoPannel {
@@ -15,13 +15,17 @@
     justify-content: space-between;
     align-items: center;
   }
-  .infoPannel__item {
-    margin-right: 20px;
-    &:last-child {
-      margin-right: 0;
-    }
-    & .infoPannel__item_elips {
-      border-radius: 25px;
-    }
+}
+.infoPannel__fullName {
+  font: 400 14px/32px sans-serif;
+  margin-right: 26px;
+}
+.infoPannel__item {
+  margin-right: 20px;
+  &:last-child {
+    margin-right: 0;
+  }
+  & .infoPannel__item_elips {
+    border-radius: 25px;
   }
 }

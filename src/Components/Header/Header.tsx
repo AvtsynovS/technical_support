@@ -21,7 +21,7 @@ const Header: React.FC = () => {
             alt='avatar'
           />
         </div>
-        <div className={styles.infoPannel__item}>Ivan Ivanov</div>
+        <div className={styles.infoPannel__fullName}>Ivan Ivanov</div>
         <div className={styles.infoPannel__item}>
           <Icon iconName='icon-log-out' />
         </div>

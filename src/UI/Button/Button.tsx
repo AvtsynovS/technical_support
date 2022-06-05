@@ -3,18 +3,21 @@ import styled from 'styled-components';
 import { color } from '../../Constants';
 
 interface Props {
-  children: string;
+  children: React.ReactNode | string;
   bgColor?: color;
   color?: string;
 }
+// border: 1px solid #adadad;
+// box-sizing: border-box;
 
 const StyleButton = styled.button<Props>`
-  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  padding: 4px 12px;
   border-radius: 16px;
-  font: 700 18px/36px 'Inter';
-  letter-spacing: 0.25px;
-  border: 1px solid #adadad;
-  box-sizing: border-box;
+  font: 700 18px/32px sans-serif;
+  letter-spacing: 0.2px;
+
   color: ${(props) => {
     if (props.color === 'secondary') {
       return '#858585';
@@ -22,7 +25,7 @@ const StyleButton = styled.button<Props>`
     return '#fff';
   }};
   background-color: ${(props) => {
-    if (props.bgColor === 'prymary') {
+    if (props.bgColor === 'primary') {
       return '#7db59a';
     } else if (props.bgColor === 'secondary') {
       return 'transparent';
@@ -38,7 +41,7 @@ const StyleButton = styled.button<Props>`
       return '#fff';
     }};
     background-color: ${(props) => {
-      if (props.bgColor === 'prymary') {
+      if (props.bgColor === 'primary') {
         return '#5B9479';
       } else if (props.bgColor === 'secondary') {
         return 'transparent';
@@ -55,7 +58,7 @@ const StyleButton = styled.button<Props>`
       return '#fff';
     }};
     background-color: ${(props) => {
-      if (props.bgColor === 'prymary') {
+      if (props.bgColor === 'primary') {
         return '#4F896C';
       } else if (props.bgColor === 'secondary') {
         return 'transparent';
