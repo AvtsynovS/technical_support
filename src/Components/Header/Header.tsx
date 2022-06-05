@@ -7,7 +7,9 @@ import avatar from '../../assets/images/avatar.png';
 const Header: React.FC = () => {
   return (
     <div className={styles.headerContainer}>
-      <Input placeholder='Search' icon='icon-search' />
+      <div className={styles.headerContainer__search}>
+        <Input placeholder='Search' icon='icon-search' />
+      </div>
       <div className={styles.infoPannel}>
         <div className={styles.infoPannel__item}>
           <Icon iconName='icon-bell' />
@@ -19,7 +21,7 @@ const Header: React.FC = () => {
             alt='avatar'
           />
         </div>
-        <div className={styles.infoPannel__item}>Ivan</div>
+        <div className={styles.infoPannel__item}>Ivan Ivanov</div>
         <div className={styles.infoPannel__item}>
           <Icon iconName='icon-log-out' />
         </div>

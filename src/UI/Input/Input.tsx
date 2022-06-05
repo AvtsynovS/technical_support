@@ -21,23 +21,22 @@ const StyleLable = styled.label<Props>`
   margin-bottom: 8px;
 `;
 const StyleInput = styled.input<Props>`
-  font: 400 18px/22px 'Inter';
+  flex: 1 0 auto;
+  font: 400 18px/32px sans-serif;
   background: #f0f0f0;
   border-radius: 16px;
-  box-sizing: border-box;
-  border: 1px solid #f0f0f0;
-  padding: 13px 40px 13px 16px;
+  padding: 8px 16px;
   &::-webkit-input-placeholder {
-    color: #000;
+    color: #adadad;
   }
   &::-moz-placeholder {
-    color: #000;
+    color: #adadad;
   }
   &:-moz-placeholder {
-    color: #000;
+    color: #adadad;
   }
   &:-ms-input-placeholder {
-    color: #000;
+    color: #adadad;
   }
   &:focus {
     background: #fdcb6e;
@@ -56,19 +55,17 @@ export const Input = (props: Props) => {
   const { placeholder, label, waringMessage, warning, icon } = props;
   return (
     <>
+      {label && <StyleLable>{label}</StyleLable>}
       {warning ? (
-        <div className={styles.container}>
-          <StyleLable>{label}</StyleLable>
+        <div className={styles.textFiled}>
           <StyleInput placeholder={placeholder}></StyleInput>
+          {icon && <Icon iconName={icon} />}
           {waringMessage && <WarningMessage>{waringMessage}</WarningMessage>}
         </div>
       ) : (
-        <div className={styles.container}>
-          <StyleLable>{label}</StyleLable>
-          <div className={styles.textFiled}>
-            <StyleInput placeholder={placeholder}></StyleInput>
-            {icon && <Icon iconName={icon} />}
-          </div>
+        <div className={styles.textFiled}>
+          <StyleInput placeholder={placeholder}></StyleInput>
+          {icon && <Icon iconName={icon} />}
         </div>
       )}
     </>
