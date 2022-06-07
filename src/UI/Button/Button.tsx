@@ -6,6 +6,8 @@ interface Props {
   children: string;
   bgColor?: color;
   color?: string;
+  type?: string;
+  form?: string;
 }
 
 const StyleButton = styled.button<Props>`
@@ -22,7 +24,7 @@ const StyleButton = styled.button<Props>`
     return '#fff';
   }};
   background-color: ${(props) => {
-    if (props.bgColor === 'prymary') {
+    if (props.bgColor === 'primary') {
       return '#7db59a';
     } else if (props.bgColor === 'secondary') {
       return 'transparent';
@@ -38,7 +40,7 @@ const StyleButton = styled.button<Props>`
       return '#fff';
     }};
     background-color: ${(props) => {
-      if (props.bgColor === 'prymary') {
+      if (props.bgColor === 'primary') {
         return '#5B9479';
       } else if (props.bgColor === 'secondary') {
         return 'transparent';
@@ -55,7 +57,7 @@ const StyleButton = styled.button<Props>`
       return '#fff';
     }};
     background-color: ${(props) => {
-      if (props.bgColor === 'prymary') {
+      if (props.bgColor === 'primary') {
         return '#4F896C';
       } else if (props.bgColor === 'secondary') {
         return 'transparent';
