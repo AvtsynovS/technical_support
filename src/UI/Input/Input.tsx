@@ -16,6 +16,8 @@ interface Props {
 }
 
 const StyleLable = styled.label<Props>`
+  display: flex;
+  flex-direction: column;
   font: 800 12px/15px 'Inter';
   letter-spacing: 2px;
   text-transform: capitalize;
@@ -58,18 +60,24 @@ export const Input = (props: Props) => {
   const { placeholder, label, waringMessage, warning, icon } = props;
   return (
     <>
-      {label && <StyleLable>{label}</StyleLable>}
-      {warning ? (
-        <div className={styles.textFiled}>
-          <StyleInput placeholder={placeholder}></StyleInput>
-          {icon && <Icon iconName={icon} />}
-          {waringMessage && <WarningMessage>{waringMessage}</WarningMessage>}
-        </div>
-      ) : (
-        <div className={styles.textFiled}>
-          <StyleInput placeholder={placeholder}></StyleInput>
-          {icon && <Icon iconName={icon} />}
-        </div>
+      {label && (
+        <StyleLable>
+          {label}
+          {warning ? (
+            <div className={styles.textFiled}>
+              <StyleInput placeholder={placeholder}></StyleInput>
+              {icon && <Icon iconName={icon} />}
+              {waringMessage && (
+                <WarningMessage>{waringMessage}</WarningMessage>
+              )}
+            </div>
+          ) : (
+            <div className={styles.textFiled}>
+              <StyleInput placeholder={placeholder}></StyleInput>
+              {icon && <Icon iconName={icon} />}
+            </div>
+          )}
+        </StyleLable>
       )}
     </>
   );

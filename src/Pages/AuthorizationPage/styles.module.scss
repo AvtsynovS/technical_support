@@ -1,0 +1,107 @@
+@import '../../Constants/constants.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.wrapper {
+  display: flex;
+  height: 100vh;
+  .authorizationImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 auto;
+    min-width: 50vw;
+    position: relative;
+    overflow: hidden;
+    background: rgba(211, 237, 225, 0.97);
+    & img {
+      max-width: 100%;
+      max-height: 100%;
+      position: absolute;
+      padding: 100px 130px;
+    }
+  }
+  .authorizationForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 50vw;
+    & .authorizationForm__brand {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 95px;
+    }
+    & .authorizationForm__form {
+      display: flex;
+      flex-direction: column;
+      min-width: 50%;
+      & .label {
+        display: flex;
+        flex-direction: column;
+        font: 800 12px/15px Inter;
+        letter-spacing: 2px;
+        text-transform: capitalize;
+        color: #adadad;
+        margin-bottom: 30px;
+        .input__wrapper {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: #f0f0f0;
+          border-radius: 16px;
+          & input {
+            box-sizing: border-box;
+            opacity: 0.24;
+            border-radius: 16px;
+          }
+          & img {
+            width: 40px;
+            height: 40px;
+            margin-right: 16px;
+          }
+        }
+      }
+      & div {
+        margin-top: 8px;
+      }
+      & button {
+        margin: 35px 0 16px 0;
+      }
+      & p {
+        text-align: center;
+        font: 14px/17px sans-serif;
+        & a {
+          color: blue;
+        }
+      }
+    }
+  }
+}
+
+.input__mail,
+.input__password {
+  flex: 1 1 auto;
+  background-color: #f0f0f0;
+  padding: 8px 16px;
+  border-radius: 16px;
+  font: 400 18px/32px sans-serif;
+  letter-spacing: 0.6px;
+}
+
+.label__checkbox {
+  font: 14px/17px sans-serif;
+}
+
+.input__checkbox {
+  margin-right: 10px;
+}
+
+.footer {
+  background-color: $PRIMARY_COLOR;
+  padding: 15px 30px;
+}
