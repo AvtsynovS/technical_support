@@ -11,9 +11,12 @@ interface Props {
 }
 
 const StyleButton = styled.button<Props>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 8px 16px;
   border-radius: 16px;
-  font: 700 18px/36px 'Inter';
+  font: 700 18px/36px Inter, sans-serif;
   letter-spacing: 0.25px;
   border: 1px solid #adadad;
   box-sizing: border-box;

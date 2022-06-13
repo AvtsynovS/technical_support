@@ -323,6 +323,44 @@ export const Icon = (props: Props) => {
           />
         </svg>
       );
+    case 'icon-plus':
+      return (
+        <svg
+          width='40'
+          height='40'
+          viewBox='0 0 40 40'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
+        >
+          <path
+            d='M20 13V27'
+            stroke='white'
+            stroke-width='2'
+            stroke-linecap='round'
+            stroke-linejoin='round'
+          />
+          <path
+            d='M13 20H27'
+            stroke='white'
+            stroke-width='2'
+            stroke-linecap='round'
+            stroke-linejoin='round'
+          />
+        </svg>
+      );
+    case 'icon-sort':
+      return (
+        <svg
+          width='7'
+          height='10'
+          viewBox='0 0 7 10'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
+        >
+          <path d='M0 3.75L3.5 0L7 3.75H0Z' fill='#C2C2C2' />
+          <path d='M0 6.25L3.5 10L7 6.25H0Z' fill='#C2C2C2' />
+        </svg>
+      );
 
     default:
       return <svg></svg>;
