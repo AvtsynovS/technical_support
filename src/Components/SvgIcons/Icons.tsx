@@ -243,8 +243,8 @@ export const Icon = (props: Props) => {
             d='M29 20H17'
             stroke='#5C5C5C'
             strokeWidth='2'
-            stroke-linecap='round'
-            stroke-linejoin='round'
+            strokeLinecap='round'
+            strokeLinejoin='round'
           />
         </svg>
       );
@@ -261,15 +261,15 @@ export const Icon = (props: Props) => {
             d='M12 12H28C29.1 12 30 12.9 30 14V26C30 27.1 29.1 28 28 28H12C10.9 28 10 27.1 10 26V14C10 12.9 10.9 12 12 12Z'
             stroke='#ADADAD'
             strokeWidth='2'
-            stroke-linecap='round'
-            stroke-linejoin='round'
+            strokeLinecap='round'
+            strokeLinejoin='round'
           />
           <path
             d='M30 14L20 21L10 14'
             stroke='#ADADAD'
             strokeWidth='2'
-            stroke-linecap='round'
-            stroke-linejoin='round'
+            strokeLinecap='round'
+            strokeLinejoin='round'
           />
         </svg>
       );
@@ -286,15 +286,15 @@ export const Icon = (props: Props) => {
             d='M18 27C22.4183 27 26 23.4183 26 19C26 14.5817 22.4183 11 18 11C13.5817 11 10 14.5817 10 19C10 23.4183 13.5817 27 18 27Z'
             stroke='#5C5C5C'
             stroke-width='2'
-            stroke-linecap='round'
-            stroke-linejoin='round'
+            strokeLinecap='round'
+            strokeLinejoin='round'
           />
           <path
             d='M27.9999 28.9999L23.6499 24.6499'
             stroke='#5C5C5C'
             stroke-width='2'
-            stroke-linecap='round'
-            stroke-linejoin='round'
+            strokeLinecap='round'
+            strokeLinejoin='round'
           />
         </svg>
       );
@@ -306,7 +306,6 @@ export const Icon = (props: Props) => {
           viewBox='0 0 40 40'
           fill='none'
           xmlns='http://www.w3.org/2000/svg'
-          className={styles.iconLock}
         >
           <path
             d='M27 19H13C11.8954 19 11 19.8954 11 21V28C11 29.1046 11.8954 30 13 30H27C28.1046 30 29 29.1046 29 28V21C29 19.8954 28.1046 19 27 19Z'
@@ -322,44 +321,6 @@ export const Icon = (props: Props) => {
             strokeLinecap='round'
             strokeLinejoin='round'
           />
-        </svg>
-      );
-    case 'icon-plus':
-      return (
-        <svg
-          width='40'
-          height='40'
-          viewBox='0 0 40 40'
-          fill='none'
-          xmlns='http://www.w3.org/2000/svg'
-        >
-          <path
-            d='M20 13V27'
-            stroke='white'
-            stroke-width='2'
-            stroke-linecap='round'
-            stroke-linejoin='round'
-          />
-          <path
-            d='M13 20H27'
-            stroke='white'
-            stroke-width='2'
-            stroke-linecap='round'
-            stroke-linejoin='round'
-          />
-        </svg>
-      );
-    case 'icon-sort':
-      return (
-        <svg
-          width='7'
-          height='10'
-          viewBox='0 0 7 10'
-          fill='none'
-          xmlns='http://www.w3.org/2000/svg'
-        >
-          <path d='M0 3.75L3.5 0L7 3.75H0Z' fill='#C2C2C2' />
-          <path d='M0 6.25L3.5 10L7 6.25H0Z' fill='#C2C2C2' />
         </svg>
       );
 

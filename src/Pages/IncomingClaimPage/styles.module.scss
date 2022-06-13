@@ -34,12 +34,12 @@
   background: #f0f0f0;
   border-radius: 16px;
   padding: 13px 16px;
-  margin: 8px 0 40px 0;
+  margin-bottom: 40px;
 }
 
 .buttonForm {
   display: flex;
-  & :first-child {
+  & button {
     margin-right: 24px;
   }
 }

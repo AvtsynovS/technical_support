@@ -1,12 +1,12 @@
 import React from 'react';
-import { Icon } from '../SvgIcons/Icons';
+import brand from '../../assets/images/footerBrand.png';
 import styles from './styles.module.scss';
 
 const Footer = () => {
   return (
-    <div className={styles.footer}>
-      <Icon iconName='white-brand' />
-    </div>
+    <footer className={styles.footer}>
+      <img src={brand} alt='brand' />
+    </footer>
   );
 };
 

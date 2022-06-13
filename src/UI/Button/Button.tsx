@@ -3,21 +3,20 @@ import styled from 'styled-components';
 import { color } from '../../Constants';
 
 interface Props {
-  children: React.ReactNode | string;
+  children: React.ReactNode;
   bgColor?: color;
   color?: string;
+  type?: string;
+  form?: string;
 }
-// border: 1px solid #adadad;
-// box-sizing: border-box;
 
 const StyleButton = styled.button<Props>`
-  display: flex;
-  align-items: center;
-  padding: 4px 12px;
+  padding: 8px 16px;
   border-radius: 16px;
-  font: 700 18px/32px sans-serif;
-  letter-spacing: 0.2px;
-
+  font: 700 18px/36px 'Inter';
+  letter-spacing: 0.25px;
+  border: 1px solid #adadad;
+  box-sizing: border-box;
   color: ${(props) => {
     if (props.color === 'secondary') {
       return '#858585';
@@ -32,7 +31,6 @@ const StyleButton = styled.button<Props>`
     }
     return '#e84393';
   }};
-
   &: hover {
     color: ${(props) => {
       if (props.color === 'secondary') {
@@ -49,7 +47,6 @@ const StyleButton = styled.button<Props>`
       return '#B03671';
     }};
   }
-
   &: active {
     color: ${(props) => {
       if (props.color === 'secondary') {

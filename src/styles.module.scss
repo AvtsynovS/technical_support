@@ -1,11 +1,10 @@
 .container {
   display: flex;
-  flex-wrap: wrap;
+  height: 100vh;
 }
 
 .wrapper {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
   flex-grow: 1;
 }
