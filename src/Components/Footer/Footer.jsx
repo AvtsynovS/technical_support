@@ -4,9 +4,9 @@ import styles from './styles.module.scss';
 
 const Footer = () => {
   return (
-    <div className={styles.footer}>
+    <footer className={styles.footer}>
       <img src={brand} alt='brand' />
-    </div>
+    </footer>
   );
 };
 

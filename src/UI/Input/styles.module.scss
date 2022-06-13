@@ -1,9 +1,17 @@
 .textFiled {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  position: relative;
+  align-items: center;
   background-color: #f0f0f0;
   border-radius: 16px;
+  margin-top: 8px;
+  border: none;
+}
+
+.textFiled:focus-within {
+  background: #f0e0c4;
+  border-radius: 12px;
+  box-sizing: border-box;
+  border: 1px solid #fdcb6e;
   border: none;
 }

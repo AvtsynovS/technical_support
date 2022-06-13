@@ -5,32 +5,27 @@ import { colorInput } from '../../Constants';
 import styles from './styles.module.scss';
 
 interface Props {
-  bgColor?: colorInput;
+  type?: string;
+  name?: string;
   placeholder?: string;
-  label?: string;
+  required?: boolean;
+  bgColor?: colorInput;
+  icon?: string;
   waringMessage?: string;
   warning?: boolean;
-  icon?: string;
-  required?: boolean;
-  name?: string;
 }
 
-const StyleLable = styled.label<Props>`
-  display: flex;
-  flex-direction: column;
-  font: 800 12px/15px 'Inter';
-  letter-spacing: 2px;
-  text-transform: capitalize;
-  color: #adadad;
-  margin-bottom: 8px;
-`;
 const StyleInput = styled.input<Props>`
-  flex: 1 0 auto;
-  font: 400 18px/32px sans-serif;
-  letter-spacing: 0.6px;
   background: #f0f0f0;
   border-radius: 16px;
-  padding: 8px 16px;
+  opacity: 0.24;
+  border: 1px solid #f0f0f0;
+  width: 100%;
+  heigth: 100%;
+  font: 400 18px/32px sans-serif;
+  letter-spacing: 0.6px;
+  padding: 7px 16px;
+  color: #2d3436;
   &::-webkit-input-placeholder {
     color: #adadad;
   }
@@ -44,11 +39,9 @@ const StyleInput = styled.input<Props>`
     color: #adadad;
   }
   &:focus {
-    background: #fdcb6e;
-    border-radius: 12px;
-    opacity: 0.4;
-    box-sizing: border-box;
-    border: 1px solid #fdcb6e;
+    opacity: 1;
+    color: #2d3436;
+    background: #f0e0c4;
   }
 `;
 const WarningMessage = styled.div<Props>`
@@ -57,27 +50,20 @@ const WarningMessage = styled.div<Props>`
 `;
 
 export const Input = (props: Props) => {
-  const { placeholder, label, waringMessage, warning, icon } = props;
+  const { placeholder, waringMessage, warning, icon } = props;
   return (
     <>
-      {label && (
-        <StyleLable>
-          {label}
-          {warning ? (
-            <div className={styles.textFiled}>
-              <StyleInput placeholder={placeholder}></StyleInput>
-              {icon && <Icon iconName={icon} />}
-              {waringMessage && (
-                <WarningMessage>{waringMessage}</WarningMessage>
-              )}
-            </div>
-          ) : (
-            <div className={styles.textFiled}>
-              <StyleInput placeholder={placeholder}></StyleInput>
-              {icon && <Icon iconName={icon} />}
-            </div>
-          )}
-        </StyleLable>
+      {warning ? (
+        <div className={styles.textFiled}>
+          <StyleInput placeholder={placeholder}></StyleInput>
+          {icon && <Icon iconName={icon} />}
+          {waringMessage && <WarningMessage>{waringMessage}</WarningMessage>}
+        </div>
+      ) : (
+        <div className={styles.textFiled}>
+          <StyleInput placeholder={placeholder}></StyleInput>
+          {icon && <Icon iconName={icon} />}
+        </div>
       )}
     </>
   );
