@@ -77,7 +77,7 @@ const MainPage: React.FC = () => {
           <td>Figma smart web system for to build</td>
           <td>12/04/2021</td>
           <td>Hardware</td>
-          <td>declined</td>
+          <td>declined </td>
           <td>
             <Button>
               <Link to='/editclaim'>Browse</Link>
