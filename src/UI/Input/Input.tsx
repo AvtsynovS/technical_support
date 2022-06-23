@@ -11,8 +11,10 @@ interface Props {
   required?: boolean;
   bgColor?: colorInput;
   icon?: string;
-  waringMessage?: string;
   warning?: boolean;
+  value?: string;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
 }
 
 const StyleInput = styled.input<Props>`
@@ -44,24 +46,32 @@ const StyleInput = styled.input<Props>`
     background: #f0e0c4;
   }
 `;
-const WarningMessage = styled.div<Props>`
-  margin-top: 6px;
-  color: red;
-`;
 
 export const Input = (props: Props) => {
-  const { placeholder, waringMessage, warning, icon } = props;
+  const { name, placeholder, warning, icon, value, onChange, onBlur } = props;
+
   return (
     <>
       {warning ? (
-        <div className={styles.textFiled}>
-          <StyleInput placeholder={placeholder}></StyleInput>
+        <div className={styles.textFiled_warning}>
+          <StyleInput
+            name={name}
+            placeholder={placeholder}
+            value={value}
+            onChange={onChange}
+            onBlur={onBlur}
+          ></StyleInput>
           {icon && <Icon iconName={icon} />}
-          {waringMessage && <WarningMessage>{waringMessage}</WarningMessage>}
         </div>
       ) : (
         <div className={styles.textFiled}>
-          <StyleInput placeholder={placeholder}></StyleInput>
+          <StyleInput
+            name={name}
+            placeholder={placeholder}
+            value={value}
+            onChange={onChange}
+            onBlur={onBlur}
+          ></StyleInput>
           {icon && <Icon iconName={icon} />}
         </div>
       )}

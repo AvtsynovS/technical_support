@@ -8,6 +8,7 @@ interface Props {
   color?: string;
   type?: string;
   form?: string;
+  disabled?: boolean;
 }
 
 const StyleButton = styled.button<Props>`
@@ -27,13 +28,24 @@ const StyleButton = styled.button<Props>`
     return '#fff';
   }};
   background-color: ${(props) => {
-    if (props.bgColor === 'primary') {
-      return '#7db59a';
-    } else if (props.bgColor === 'secondary') {
-      return 'transparent';
+    if (props.disabled) {
+      return '#808080';
+    } else {
+      if (props.bgColor === 'primary') {
+        return '#7db59a';
+      } else if (props.bgColor === 'secondary') {
+        return 'transparent';
+      }
+      return '#e84393';
     }
-    return '#e84393';
   }};
+  cursor: ${(props) => {
+    if (!props.disabled) {
+      return 'pointer';
+    }
+    return 'default';
+  }};
+
   &: hover {
     color: ${(props) => {
       if (props.color === 'secondary') {
@@ -42,12 +54,16 @@ const StyleButton = styled.button<Props>`
       return '#fff';
     }};
     background-color: ${(props) => {
-      if (props.bgColor === 'primary') {
-        return '#5B9479';
-      } else if (props.bgColor === 'secondary') {
-        return 'transparent';
+      if (props.disabled) {
+        return '#808080';
+      } else {
+        if (props.bgColor === 'primary') {
+          return '#5B9479';
+        } else if (props.bgColor === 'secondary') {
+          return 'transparent';
+        }
+        return '#B03671';
       }
-      return '#B03671';
     }};
   }
   &: active {
@@ -58,20 +74,24 @@ const StyleButton = styled.button<Props>`
       return '#fff';
     }};
     background-color: ${(props) => {
-      if (props.bgColor === 'primary') {
-        return '#4F896C';
-      } else if (props.bgColor === 'secondary') {
-        return 'transparent';
+      if (props.disabled) {
+        return '#808080';
+      } else {
+        if (props.bgColor === 'primary') {
+          return '#4F896C';
+        } else if (props.bgColor === 'secondary') {
+          return 'transparent';
+        }
+        return '#832552';
       }
-      return '#832552';
     }};
   }
 `;
 
 export const Button = (props: Props) => {
-  const { bgColor, children, color } = props;
+  const { bgColor, children, color, disabled } = props;
   return (
-    <StyleButton color={color} bgColor={bgColor}>
+    <StyleButton color={color} bgColor={bgColor} disabled={disabled}>
       {children}
     </StyleButton>
   );

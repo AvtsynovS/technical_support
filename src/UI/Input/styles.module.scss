@@ -8,6 +8,16 @@
   border: none;
 }
 
+.textFiled_warning {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f0f0f0;
+  border-radius: 16px;
+  margin-top: 8px;
+  border: 1px solid #cc1f1f;
+}
+
 .textFiled:focus-within {
   background: #f0e0c4;
   border-radius: 12px;
