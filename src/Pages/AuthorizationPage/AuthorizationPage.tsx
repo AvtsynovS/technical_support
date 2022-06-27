@@ -7,6 +7,9 @@ import Footer from '../../Components/Footer/Footer';
 import { Input } from '../../UI/Input/Input';
 import { Button } from '../../UI/Button/Button';
 import { Label } from '../../UI/Label/Label';
+import { useTypeSelector } from './../../hooks/useTypeSelector';
+import { useActions } from './../../hooks/useActions';
+import TestPage from '../TestPage';
 
 const AuthorizationPage: React.FC = () => {
   const [emailDirty, setEmailDirty] = useState(false);
@@ -140,6 +143,7 @@ const AuthorizationPage: React.FC = () => {
               </Link>
             </p>
           </form>
+          {/* <TestPage /> */}
         </div>
       </div>
       <Footer></Footer>
