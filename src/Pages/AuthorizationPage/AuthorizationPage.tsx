@@ -135,7 +135,7 @@ const AuthorizationPage: React.FC = () => {
             </Button>
             <p>
               Not a member?{' '}
-              <Link to='/' className={styles.registrationLink}>
+              <Link to='/registration' className={styles.registrationLink}>
                 Request registration.
               </Link>
             </p>
