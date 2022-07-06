@@ -7,8 +7,11 @@ import Footer from '../../Components/Footer/Footer';
 import { Input } from '../../UI/Input/Input';
 import { Button } from '../../UI/Button/Button';
 import { Label } from '../../UI/Label/Label';
+import { useTypeSelector } from './../../hooks/useTypeSelector';
+import { useActions } from '../../hooks/useActions';
 
 const RegistrationPage: React.FC = () => {
+  // validation
   const [input, setInput] = useState({
     fullName: '',
     email: '',
@@ -94,6 +97,23 @@ const RegistrationPage: React.FC = () => {
       setFormValid(true);
     }
   }, [input, error]);
+
+  // registration
+  // есть еще поле error но из-за названия происходит конфликт
+  // users выводим в HTML
+  const { users, loading } = useTypeSelector((state) => state.user);
+  const { fetchUsers } = useActions();
+
+  useEffect(() => {
+    fetchUsers();
+  });
+
+  if (loading) {
+    return <h1>Идет загрузка...</h1>;
+  }
+  // if (error) {
+  //   <h1>Произошла ошибка {error}</h1>
+  // }
 
   return (
     <div className={styles.container}>
