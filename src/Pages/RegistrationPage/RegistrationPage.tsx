@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './styles.module.scss';
 import brand from '../../assets/images/brand.png';
 import authorizationImage from '../../assets/images/authorizationImage.png';
@@ -7,7 +7,6 @@ import Footer from '../../Components/Footer/Footer';
 import { Input } from '../../UI/Input/Input';
 import { Button } from '../../UI/Button/Button';
 import { Label } from '../../UI/Label/Label';
-import { useTypeSelector } from './../../hooks/useTypeSelector';
 import { useActions } from '../../hooks/useActions';
 
 const RegistrationPage: React.FC = () => {
@@ -99,21 +98,18 @@ const RegistrationPage: React.FC = () => {
   }, [input, error]);
 
   // registration
-  // есть еще поле error но из-за названия происходит конфликт
-  // users выводим в HTML
-  const { users, loading } = useTypeSelector((state) => state.user);
-  const { fetchUsers } = useActions();
+  const { fetchRegistration } = useActions();
 
-  useEffect(() => {
-    fetchUsers();
-  });
-
-  if (loading) {
-    return <h1>Идет загрузка...</h1>;
-  }
-  // if (error) {
-  //   <h1>Произошла ошибка {error}</h1>
-  // }
+  let navigation = useNavigate();
+  const submitHandler = (event: React.FormEvent) => {
+    event.preventDefault();
+    fetchRegistration({
+      fullName: input.fullName,
+      email: input.email,
+      password: input.password,
+    });
+    navigation('/main');
+  };
 
   return (
     <div className={styles.container}>
@@ -129,6 +125,7 @@ const RegistrationPage: React.FC = () => {
             action='http://localhost:3001'
             method='post'
             className={styles.authorizationForm__form}
+            onSubmit={submitHandler}
           >
             {error.fullName ? (
               <Label htmlFor='fullName'>
