@@ -17,11 +17,14 @@
   }
   .infoPannel__item {
     margin-right: 20px;
-    &:last-child {
-      margin-right: 0;
-    }
+    // &:last-child {
+    //   margin-right: 0;
+    // }
     & .infoPannel__item_elips {
       border-radius: 25px;
     }
+  }
+  .infoPannel__button {
+    background-color: transparent;
   }
 }

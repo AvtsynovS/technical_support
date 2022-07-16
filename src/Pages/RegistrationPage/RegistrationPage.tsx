@@ -24,6 +24,7 @@ const RegistrationPage: React.FC = () => {
     password: '',
     confirmPassword: '',
   });
+  const [formValid, setFormValid] = useState(false);
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -78,8 +79,6 @@ const RegistrationPage: React.FC = () => {
     });
   };
 
-  const [formValid, setFormValid] = useState(false);
-
   useEffect(() => {
     if (
       input.fullName === '' ||
@@ -102,7 +101,6 @@ const RegistrationPage: React.FC = () => {
 
   let navigation = useNavigate();
   const submitHandler = (event: React.FormEvent) => {
-    event.preventDefault();
     fetchRegistration({
       fullName: input.fullName,
       email: input.email,

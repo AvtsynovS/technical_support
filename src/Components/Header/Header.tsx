@@ -4,9 +4,14 @@ import { Icon } from '../SvgIcons/Icons';
 import styles from './styles.module.scss';
 import avatar from '../../assets/images/avatar.png';
 import { useLocation } from 'react-router-dom';
+import { useTypeSelector } from '../../hooks/useTypeSelector';
 
 const Header: React.FC = () => {
   let location = useLocation();
+  const { isAuthorization, fullName } = useTypeSelector((state) => state.auth);
+
+  const logoutHandler = (event: React.MouseEvent) => {};
+  // event?.preventDefault();
 
   return (
     <>
@@ -26,10 +31,13 @@ const Header: React.FC = () => {
                 alt='avatar'
               />
             </div>
-            <div className={styles.infoPannel__item}>Ivan Ivanov</div>
-            <div className={styles.infoPannel__item}>
+            <div className={styles.infoPannel__item}>{fullName}</div>
+            <button
+              onClick={logoutHandler}
+              className={styles.infoPannel__button}
+            >
               <Icon iconName='icon-log-out' />
-            </div>
+            </button>
           </div>
         </div>
       ) : (

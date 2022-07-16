@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './styles.module.scss';
 import brand from '../../assets/images/brand.png';
 import authorizationImage from '../../assets/images/authorizationImage.png';
@@ -7,50 +7,77 @@ import Footer from '../../Components/Footer/Footer';
 import { Input } from '../../UI/Input/Input';
 import { Button } from '../../UI/Button/Button';
 import { Label } from '../../UI/Label/Label';
+import { useActions } from '../../hooks/useActions';
 
 const AuthorizationPage: React.FC = () => {
-  const [emailDirty, setEmailDirty] = useState(false);
-  const [passwordDirty, setPasswordDirty] = useState(false);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [emailError, setEmailError] = useState('Wrong email');
-  const [passwordError, setPasswordError] = useState('Wrong password');
+  // validation
+  const [input, setInput] = useState({
+    email: '',
+    password: '',
+  });
+
+  const [error, setError] = useState({
+    email: '',
+    password: '',
+  });
   const [formValid, setFormValid] = useState(false);
 
-  //validation
+  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setInput((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+    validateInput(e);
+  };
+
+  const validateInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let { name, value } = e.target;
+    setError((prev) => {
+      const validate = { ...prev, [name]: '' };
+
+      switch (name) {
+        case 'email':
+          const re =
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          if (!value || !re.test(String(value).toLowerCase())) {
+            validate[name] = 'Wrong email';
+          }
+          break;
+        case 'password':
+          !value || value.length < 3 || value.length > 10
+            ? (validate[name] = 'Wrong Password.')
+            : (validate[name] = '');
+          break;
+      }
+      return validate;
+    });
+  };
+
   useEffect(() => {
-    if (emailError || passwordError) {
+    if (
+      input.email === '' ||
+      input.password === '' ||
+      error.email ||
+      error.password
+    ) {
       setFormValid(false);
     } else {
       setFormValid(true);
     }
-  }, [emailError, passwordError]);
+  }, [input, error]);
 
-  const blurHandler = (event: React.FocusEvent<HTMLInputElement>) => {
-    switch (event.target.name) {
-      case 'email':
-        setEmailDirty(true);
-        break;
-      case 'password':
-        setPasswordDirty(true);
-        break;
-    }
-  };
+  // authorization
+  const { fetchAuthorization } = useActions();
+  let navigation = useNavigate();
 
-  const emailHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
-    const re =
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    !re.test(String(event.target.value).toLowerCase())
-      ? setEmailError('Wrong email')
-      : setEmailError('');
-  };
-
-  const passwordHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.target.value);
-    event.target.value.length < 3 || event.target.value.length > 10
-      ? setPasswordError('Wrong password')
-      : setPasswordError('');
+  const submitHandler = (event: React.FormEvent) => {
+    event.preventDefault();
+    fetchAuthorization({
+      email: input.email,
+      password: input.password,
+    });
+    navigation('/main');
   };
 
   return (
@@ -67,20 +94,21 @@ const AuthorizationPage: React.FC = () => {
             action='http://localhost:3001'
             method='post'
             className={styles.authorizationForm__form}
+            onSubmit={submitHandler}
           >
-            {emailDirty && emailError ? (
+            {error.email ? (
               <Label htmlFor='email'>
                 E-MAIL
                 <Input
                   name='email'
                   placeholder='Type your e-mail'
                   icon='icon-mail'
-                  value={email}
-                  onBlur={blurHandler}
-                  onChange={emailHandler}
+                  value={input.email}
+                  onBlur={validateInput}
+                  onChange={onInputChange}
                   warning={true}
                 />
-                <div className={styles.errorMessage}>{emailError}</div>
+                <div className={styles.errorMessage}>{error.email}</div>
               </Label>
             ) : (
               <Label htmlFor='email'>
@@ -89,25 +117,25 @@ const AuthorizationPage: React.FC = () => {
                   name='email'
                   placeholder='Type your e-mail'
                   icon='icon-mail'
-                  value={email}
-                  onBlur={blurHandler}
-                  onChange={emailHandler}
+                  value={input.email}
+                  onBlur={validateInput}
+                  onChange={onInputChange}
                 />
               </Label>
             )}
-            {passwordDirty && passwordError ? (
+            {error.password ? (
               <Label htmlFor='password'>
                 PASSWORD
                 <Input
                   name='password'
                   placeholder='Type your password'
                   icon='icon-lock'
-                  value={password}
-                  onBlur={blurHandler}
-                  onChange={passwordHandler}
+                  value={input.password}
+                  onBlur={validateInput}
+                  onChange={onInputChange}
                   warning={true}
                 />
-                <div className={styles.errorMessage}>{passwordError}</div>
+                <div className={styles.errorMessage}>{error.password}</div>
               </Label>
             ) : (
               <Label htmlFor='password'>
@@ -116,9 +144,9 @@ const AuthorizationPage: React.FC = () => {
                   name='password'
                   placeholder='Type your password'
                   icon='icon-lock'
-                  value={password}
-                  onBlur={blurHandler}
-                  onChange={passwordHandler}
+                  value={input.password}
+                  onBlur={validateInput}
+                  onChange={onInputChange}
                 />
               </Label>
             )}
