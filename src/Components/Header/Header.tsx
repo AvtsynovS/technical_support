@@ -3,15 +3,20 @@ import { Input } from '../../UI/Input/Input';
 import { Icon } from '../SvgIcons/Icons';
 import styles from './styles.module.scss';
 import avatar from '../../assets/images/avatar.png';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useTypeSelector } from '../../hooks/useTypeSelector';
+import { logout } from '../../store/ActionCreators/auth';
 
 const Header: React.FC = () => {
   let location = useLocation();
+  let nvigation = useNavigate();
   const { isAuthorization, fullName } = useTypeSelector((state) => state.auth);
 
-  const logoutHandler = (event: React.MouseEvent) => {};
-  // event?.preventDefault();
+  const logoutHandler = (event: React.MouseEvent) => {
+    event.preventDefault();
+    logout();
+    nvigation('/');
+  };
 
   return (
     <>
@@ -53,7 +58,7 @@ const Header: React.FC = () => {
                 alt='avatar'
               />
             </div>
-            <div className={styles.infoPannel__item}>Ivan Ivanov</div>
+            <div className={styles.infoPannel__item}>{fullName}</div>
             <div className={styles.infoPannel__item}>
               <Icon iconName='icon-log-out' />
             </div>

@@ -68,12 +68,12 @@ const AuthorizationPage: React.FC = () => {
   }, [input, error]);
 
   // authorization
-  const { fetchAuthorization } = useActions();
+  const { login } = useActions();
   let navigation = useNavigate();
 
   const submitHandler = (event: React.FormEvent) => {
     event.preventDefault();
-    fetchAuthorization({
+    login({
       email: input.email,
       password: input.password,
     });

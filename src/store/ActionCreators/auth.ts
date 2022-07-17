@@ -3,10 +3,10 @@ import axios from './../../utils/API';
 import {
   AuthAction,
   AuthActionTypes,
-  AuthData,
+  LoginData,
   AuthState,
 } from '../../types/auth';
-export const fetchAuthorization = (data: AuthData) => {
+export const login = (data: LoginData) => {
   return async (dispatch: Dispatch<AuthAction>) => {
     try {
       await axios.post<AuthState>('auth/login', data).then((response) => {
@@ -28,4 +28,15 @@ export const fetchAuthorization = (data: AuthData) => {
   };
 };
 
-export const logout = () => {};
+export const logout = () => {
+  return (dispatch: Dispatch<AuthAction>) => {
+    dispatch({
+      type: AuthActionTypes.FETCH_AUTHORIZATION_LOGOUT,
+      payload: {
+        fullName: '',
+        email: '',
+        token: '',
+      },
+    });
+  };
+};
