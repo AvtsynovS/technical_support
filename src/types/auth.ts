@@ -8,6 +8,7 @@ export interface AuthState {
   token: string;
   user_id: string;
   isAuthorization: boolean;
+  errorAuthorization: null | string;
 }
 
 export interface LoginData {

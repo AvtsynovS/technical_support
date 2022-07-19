@@ -8,8 +8,9 @@ import {
 } from '../../types/auth';
 export const login = (data: LoginData) => {
   return async (dispatch: Dispatch<AuthAction>) => {
-    try {
-      await axios.post<AuthState>('auth/login', data).then((response) => {
+    await axios
+      .post<AuthState>('auth/login', data)
+      .then((response) => {
         dispatch({
           type: AuthActionTypes.FETCH_AUTHORIZATION,
           payload: {
@@ -18,13 +19,10 @@ export const login = (data: LoginData) => {
             token: response.data.token,
           },
         });
+      })
+      .catch((e) => {
+        alert(e.response.data.message);
       });
-    } catch (e) {
-      dispatch({
-        type: AuthActionTypes.FETCH_AUTHORIZATION_ERROR,
-        payload: 'Произошла ошибка при авторизации пользователя',
-      });
-    }
   };
 };
 

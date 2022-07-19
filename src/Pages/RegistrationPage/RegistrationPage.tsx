@@ -101,6 +101,7 @@ const RegistrationPage: React.FC = () => {
 
   let navigation = useNavigate();
   const submitHandler = (event: React.FormEvent) => {
+    event.preventDefault();
     fetchRegistration({
       fullName: input.fullName,
       email: input.email,
@@ -181,6 +182,7 @@ const RegistrationPage: React.FC = () => {
               <Label htmlFor='password'>
                 PASSWORD
                 <Input
+                  type='password'
                   name='password'
                   placeholder='Type your password'
                   icon='icon-lock'
@@ -195,6 +197,7 @@ const RegistrationPage: React.FC = () => {
               <Label htmlFor='password'>
                 PASSWORD
                 <Input
+                  type='password'
                   name='password'
                   placeholder='Type your password'
                   icon='icon-lock'
@@ -209,6 +212,7 @@ const RegistrationPage: React.FC = () => {
               <Label htmlFor='confirmPassword'>
                 CONFIRM PASSWORD
                 <Input
+                  type='password'
                   name='confirmPassword'
                   placeholder='Confirm your password'
                   icon='icon-lock'
@@ -225,6 +229,7 @@ const RegistrationPage: React.FC = () => {
               <Label htmlFor='checkPassword'>
                 CONFIRM PASSWORD
                 <Input
+                  type='password'
                   name='confirmPassword'
                   placeholder='Confirm your password'
                   icon='icon-lock'

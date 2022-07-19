@@ -18,12 +18,14 @@ export const registrationReducer = (
   switch (action.type) {
     case RegistrationActionTypes.FETCH_REGISTRATION:
       return {
+        ...state,
         fullName: action.payload.fullName,
         email: action.payload.email,
         password: action.payload.password,
       };
     case RegistrationActionTypes.FETCH_REGISTRATION_ERROR:
       return {
+        ...state,
         fullName: '',
         email: '',
         password: '',

@@ -8,21 +8,20 @@ import {
 
 export const fetchRegistration = (data: RegistrationState) => {
   return async (dispatch: Dispatch<RegistrationAction>) => {
-    try {
-      await axios.post<RegistrationAction>('auth/registration', data);
-      dispatch({
-        type: RegistrationActionTypes.FETCH_REGISTRATION,
-        payload: {
-          fullName: data.fullName,
-          email: data.email,
-          password: data.password,
-        },
+    await axios
+      .post<RegistrationAction>('auth/registration', data)
+      .then(() => {
+        dispatch({
+          type: RegistrationActionTypes.FETCH_REGISTRATION,
+          payload: {
+            fullName: data.fullName,
+            email: data.email,
+            password: data.password,
+          },
+        });
+      })
+      .catch((e) => {
+        alert(e.response.data.message);
       });
-    } catch (e) {
-      dispatch({
-        type: RegistrationActionTypes.FETCH_REGISTRATION_ERROR,
-        payload: 'Произошла ошибка при регистрации нового пользователя',
-      });
-    }
   };
 };

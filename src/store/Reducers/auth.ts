@@ -13,6 +13,7 @@ const initialState: AuthState = {
   token: localStorage.getItem(TOKEN) ?? '',
   user_id: '',
   isAuthorization: Boolean(localStorage.getItem(TOKEN)),
+  errorAuthorization: null,
 };
 
 export const authReducer = (state = initialState, action: AuthAction) => {
@@ -29,6 +30,7 @@ export const authReducer = (state = initialState, action: AuthAction) => {
       };
     case AuthActionTypes.FETCH_AUTHORIZATION_ERROR:
       return {
+        ...state,
         errorAuthorization: action.payload,
       };
     case AuthActionTypes.FETCH_AUTHORIZATION_LOGOUT:

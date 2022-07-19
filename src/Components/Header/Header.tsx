@@ -10,7 +10,7 @@ import { logout } from '../../store/ActionCreators/auth';
 const Header: React.FC = () => {
   let location = useLocation();
   let nvigation = useNavigate();
-  const { isAuthorization, fullName } = useTypeSelector((state) => state.auth);
+  const { fullName } = useTypeSelector((state) => state.auth);
 
   const logoutHandler = (event: React.MouseEvent) => {
     event.preventDefault();

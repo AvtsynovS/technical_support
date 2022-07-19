@@ -127,6 +127,7 @@ const AuthorizationPage: React.FC = () => {
               <Label htmlFor='password'>
                 PASSWORD
                 <Input
+                  type='password'
                   name='password'
                   placeholder='Type your password'
                   icon='icon-lock'
@@ -141,6 +142,7 @@ const AuthorizationPage: React.FC = () => {
               <Label htmlFor='password'>
                 PASSWORD
                 <Input
+                  type='password'
                   name='password'
                   placeholder='Type your password'
                   icon='icon-lock'
