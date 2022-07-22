@@ -15,17 +15,17 @@ export const createClaim = (data: createClaimData) => {
         dispatch({
           type: CreateClaimActionTypes.FETCH_CREATE_CLAIM,
           payload: {
-            title: response.data.title,
+            title: data.title,
             createdAt: response.data.createdAt,
             type: {
-              name: response.data.type.name,
+              name: data.type,
               slug: response.data.type.slug,
             },
             status: {
               name: response.data.status.name,
               slug: response.data.status.slug,
             },
-            description: response.data.description,
+            description: data.description,
           },
         });
       })

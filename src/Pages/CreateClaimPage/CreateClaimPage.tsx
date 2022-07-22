@@ -20,7 +20,29 @@ const CreateClaimPage: React.FC = () => {
     descriptionClaim: '',
   });
 
+  const [selectType, setSelectType] = useState('Select type');
+
   const [formValid, setFormValid] = useState(false);
+
+  const claimType = (value: string) => {
+    switch (value) {
+      case 'hard': {
+        return setSelectType('Hardware');
+      }
+      case 'soft': {
+        return setSelectType('Software');
+      }
+      case 'troublesh': {
+        return setSelectType('Troubleshooting');
+      }
+      case 'net': {
+        return setSelectType('Networking');
+      }
+      default: {
+        return setSelectType('Select type');
+      }
+    }
+  };
 
   //validation
 
@@ -32,6 +54,7 @@ const CreateClaimPage: React.FC = () => {
       [name]: value,
     }));
     validateSelect(e);
+    claimType(value);
   };
 
   const validateSelect = (e: React.FocusEvent<HTMLSelectElement>) => {
@@ -162,11 +185,21 @@ const CreateClaimPage: React.FC = () => {
               onBlur={validateSelect}
               onChange={onSelectChange}
             >
-              <option value={input.typeClaim}>{input.typeClaim}</option>
-              <option value='hard'>Hardware</option>
-              <option value='soft'>Software</option>
-              <option value='troublesh'>Troubleshooting</option>
-              <option value='net'>Networking</option>
+              <option value={input.typeClaim} hidden>
+                {selectType}
+              </option>
+              <option value='hard' label='Hardware'>
+                Hardware
+              </option>
+              <option value='soft' label='Software'>
+                Software
+              </option>
+              <option value='troublesh' label='Troubleshooting'>
+                Troubleshooting
+              </option>
+              <option value='net' label='Networking'>
+                Networking
+              </option>
             </select>
             <div className={styles.errorMessage}>{error.typeClaim}</div>
           </Label>
@@ -183,11 +216,21 @@ const CreateClaimPage: React.FC = () => {
               onBlur={validateSelect}
               onChange={onSelectChange}
             >
-              <option value={input.typeClaim}>{input.typeClaim}</option>
-              <option value='hard'>Hardware</option>
-              <option value='soft'>Software</option>
-              <option value='troublesh'>Troubleshooting</option>
-              <option value='net'>Networking</option>
+              <option value={input.typeClaim} hidden>
+                {selectType}
+              </option>
+              <option value='hard' label='Hardware'>
+                Hardware
+              </option>
+              <option value='soft' label='Software'>
+                Software
+              </option>
+              <option value='troublesh' label='Troubleshooting'>
+                Troubleshooting
+              </option>
+              <option value='net' label='Networking'>
+                Networking
+              </option>
             </select>
           </Label>
         )}

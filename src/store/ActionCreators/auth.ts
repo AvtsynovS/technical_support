@@ -17,6 +17,10 @@ export const login = (data: LoginData) => {
             email: data.email,
             fullName: response.data.fullName,
             token: response.data.token,
+            role: {
+              name: response.data.role.name,
+              slug: response.data.role.slug,
+            },
           },
         });
       })

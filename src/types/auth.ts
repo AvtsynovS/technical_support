@@ -28,6 +28,10 @@ interface FetchAuthorizationAction {
     fullName: string;
     email: string;
     token: string;
+    role: {
+      name: string;
+      slug: string;
+    };
   };
 }
 interface FetchAuthorizationErrorAction {

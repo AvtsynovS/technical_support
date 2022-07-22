@@ -1,31 +1,51 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from '../../Components/SvgIcons/Icons';
+import { useActions } from '../../hooks/useActions';
 import { useTypeSelector } from '../../hooks/useTypeSelector';
 import { Button } from '../../UI/Button/Button';
 import styles from './styles.module.scss';
 
 const MainPage: React.FC = () => {
-  // const { title, type, status, createdAt } = useTypeSelector(
-  //   (state) => state.createClaim
-  // );
-  const claims = useTypeSelector((state) => state.createClaim);
-  // const claimType = (type: string) => {
-  //   switch (type) {
-  //     case 'Software': {
-  //       return { background: '#FF7675' };
-  //     }
-  //     case 'Troubleshooting': {
-  //       return { background: '#6C5CE7' };
-  //     }
-  //     case 'Networking': {
-  //       return { background: '#FDCB6E' };
-  //     }
-  //     default: {
-  //       return { background: '#7DB59A' };
-  //     }
-  //   }
-  // };
+  const { claims } = useTypeSelector((state) => state.getClaims);
+  const { getClaims } = useActions();
+
+  const claimType = (type: string | undefined) => {
+    switch (type) {
+      case 'Software': {
+        return { background: '#FF7675' };
+      }
+      case 'Troubleshooting': {
+        return { background: '#6C5CE7' };
+      }
+      case 'Networking': {
+        return { background: '#FDCB6E' };
+      }
+      default: {
+        return { background: '#7DB59A' };
+      }
+    }
+  };
+  const claimStatus = (status: string) => {
+    switch (status) {
+      case 'Done': {
+        return { background: '#00B894' };
+      }
+      case 'In progress': {
+        return { background: '#FDCB6E' };
+      }
+      case 'Declined': {
+        return { background: '#E84393' };
+      }
+      default: {
+        return { background: '#6C5CE7' };
+      }
+    }
+  };
+
+  useEffect(() => {
+    getClaims();
+  }, []);
 
   return (
     <>
@@ -75,22 +95,34 @@ const MainPage: React.FC = () => {
             </tr>
           </thead>
           <tbody className={styles.table__body}>
-            <tr className={styles.table__body__tr}>
-              <td>title</td>
-              <td>created</td>
-              <td>
-                {' '}
-                <span className={styles.claimType}></span>
-                type
-              </td>
-              <td>
-                {' '}
-                <span className={styles.claim__status}>status</span>{' '}
-              </td>
-              <td>
-                <Link to='/editclaim'>Browse</Link>
-              </td>
-            </tr>
+            {claims.map((claim) => {
+              return (
+                <tr className={styles.table__body__tr} key={claim._id}>
+                  <td>{claim.title}</td>
+                  <td>{claim.createdAt}</td>
+                  <td>
+                    {' '}
+                    <span
+                      style={claimType(claim.type?.name)}
+                      className={styles.claimType}
+                    ></span>
+                    {claim.type?.name}
+                  </td>
+                  <td>
+                    {' '}
+                    <span
+                      style={claimStatus(claim.status.name)}
+                      className={styles.claim__status}
+                    >
+                      {claim.status.name}
+                    </span>{' '}
+                  </td>
+                  <td>
+                    <Link to='/editclaim'>Browse</Link>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
