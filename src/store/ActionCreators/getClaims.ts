@@ -5,10 +5,15 @@ import {
   getClaimsState,
   GetClaimsActionTypes,
 } from '../../types/getClaims';
-export const getClaims = () => {
+export const getClaims = (offset = 0, limit = 10) => {
   return async (dispatch: Dispatch<GetClaimsAction>) => {
     await axios
-      .get<getClaimsState>('claim')
+      .get<getClaimsState>(`claim?${offset}&${limit}`, {
+        params: {
+          offset,
+          limit,
+        },
+      })
       .then((response) => {
         console.log(response);
         dispatch({

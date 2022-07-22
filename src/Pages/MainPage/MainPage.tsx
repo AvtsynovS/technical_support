@@ -1,14 +1,21 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from '../../Components/SvgIcons/Icons';
 import { useActions } from '../../hooks/useActions';
 import { useTypeSelector } from '../../hooks/useTypeSelector';
 import { Button } from '../../UI/Button/Button';
 import styles from './styles.module.scss';
+import ReactPaginate from 'react-paginate';
+import { useDispatch } from 'react-redux';
+// import { getClaims } from './../../store/ActionCreators/getClaims';
+
+const LIMIT_PAGE = 10;
 
 const MainPage: React.FC = () => {
-  const { claims } = useTypeSelector((state) => state.getClaims);
+  const { claims, totalItems } = useTypeSelector((state) => state.getClaims);
   const { getClaims } = useActions();
+
+  const dispatch = useDispatch();
 
   const claimType = (type: string | undefined) => {
     switch (type) {
@@ -42,9 +49,15 @@ const MainPage: React.FC = () => {
       }
     }
   };
+  const page = useRef(1);
+
+  const pageChangeHandler = ({ selected }: { selected: number }) => {
+    page.current = selected + 1;
+  };
 
   useEffect(() => {
-    getClaims();
+    getClaims(page.current, LIMIT_PAGE);
+    // getClaims(page.current, LIMIT_PAGE);
   }, []);
 
   return (
@@ -125,6 +138,21 @@ const MainPage: React.FC = () => {
             })}
           </tbody>
         </table>
+        <ReactPaginate
+          breakLabel='...'
+          nextLabel='>'
+          onPageChange={pageChangeHandler}
+          pageRangeDisplayed={5}
+          pageCount={totalItems}
+          previousLabel='<'
+          forcePage={page.current - 1}
+          containerClassName={styles.paginate}
+          pageClassName={styles.paginate__li}
+          pageLinkClassName={styles.paginate__li__link}
+          previousClassName={styles.paginate__prev}
+          activeClassName={styles.paginate__active}
+          breakClassName={styles.paginate__break}
+        />
       </div>
     </>
   );

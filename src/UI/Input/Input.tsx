@@ -48,15 +48,14 @@ const StyleInput = styled.input<Props>`
 `;
 
 export const Input = (props: Props) => {
-  const { type, name, placeholder, warning, icon, value, onChange, onBlur } =
-    props;
+  const { name, placeholder, warning, icon, value, onChange, onBlur } = props;
 
   return (
     <>
       {warning ? (
         <div className={styles.textFiled_warning}>
           <StyleInput
-            type={type}
+            // type={type}
             name={name}
             placeholder={placeholder}
             value={value}
@@ -68,7 +67,7 @@ export const Input = (props: Props) => {
       ) : (
         <div className={styles.textFiled}>
           <StyleInput
-            type={type}
+            // type={type}
             name={name}
             placeholder={placeholder}
             value={value}
