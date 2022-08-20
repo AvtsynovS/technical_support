@@ -4,7 +4,7 @@ import { Icon } from '../../Components/SvgIcons/Icons';
 import { useActions } from '../../hooks/useActions';
 import { useTypeSelector } from '../../hooks/useTypeSelector';
 import { Button } from '../../UI/Button/Button';
-// import styles from './styles.module.scss';
+import styles from './styles.module.scss';
 
 const MainPage: React.FC = () => {
   const { claims } = useTypeSelector((state) => state.getClaims);
