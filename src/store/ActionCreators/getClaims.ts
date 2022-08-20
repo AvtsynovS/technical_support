@@ -5,6 +5,7 @@ import {
   getClaimsState,
   GetClaimsActionTypes,
 } from '../../types/getClaims';
+
 export const getClaims = () => {
   return async (dispatch: Dispatch<GetClaimsAction>) => {
     await axios

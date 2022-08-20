@@ -48,8 +48,16 @@ const StyleInput = styled.input<Props>`
 `;
 
 export const Input = (props: Props) => {
-  const { type, name, placeholder, warning, icon, value, onChange, onBlur } =
-    props;
+  const {
+    type,
+    name,
+    placeholder,
+    warning,
+    icon,
+    value,
+    onChange,
+    onBlur,
+  } = props;
 
   return (
     <>
